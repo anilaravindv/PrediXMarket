@@ -1,0 +1,19 @@
+[features]
+seeds = false
+
+[programs.localnet]
+marketplace = "6q8b3wNNYLTfaLdSdfiBhZqJsokxg6ovXLkcesmHddnw"
+
+[programs.devnet]
+marketplace = "6q8b3wNNYLTfaLdSdfiBhZqJsokxg6ovXLkcesmHddnw"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+#cluster = "localnet"
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
