@@ -19,7 +19,7 @@ const AddRemoveLiquidityButton = ({action, selectedAction, onClick, ...props}) =
     }
 
     return (
-        <CustomButton title={title} {...props} {...styleProps} padding={"7px 38px"} onClick={e => onClick(e, action)}/>
+        <button onClick={e => onClick(e, action)} className={`${action == 'add' ?`bg-green-600 rounded-l-full` :`bg-orange-600 rounded-r-full`} px-6 w-1/2 text-center py-2 text-white font-semibold cursor-pointer`}>{title}</button>
     );
 }
 

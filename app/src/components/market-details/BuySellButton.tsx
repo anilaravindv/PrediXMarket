@@ -19,8 +19,12 @@ const BuySellButton = ({action, selectedAction, onClick, ...props}) => {
     }
 
     return (
-        <CustomButton title={title} {...props} {...styleProps} padding={"7px 46px"} onClick={e => onClick(e, action)}/>
+        <button className={`${action == 'buy' ? `bg-green-600 rounded-l-full` :`bg-orange-600 rounded-r-full`} px-8 w-1/2 text-center py-2 bg-green-600 text-white font-semibold`} 
+                onClick={e => onClick(e, action)}
+        >
+            {title}
+        </button>
     );
-}
+}   
 
 export default BuySellButton;

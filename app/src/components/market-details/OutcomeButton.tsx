@@ -20,7 +20,7 @@ const OutcomeButton = ({outcome, selectedOutcome, price, onClick, ...props}) => 
     }
 
     return (
-        <CustomButton title={title} {...props} {...styleProps} padding={"12px 32px"} onClick={e => onClick(e, outcome)}/>
+        <button className={`${outcome == 'Y' ? `bg-orange-600` :`bg-black`} py-2 px-3 cursor-pointer rounded font-semibold text-white mr-1 text-[13px]`} onClick={e => onClick(e, outcome)}>{title}</button>
     );
 }
 

@@ -1,52 +1,65 @@
 import BuySellCard from "components/market-details/BuySellCard";
-import {useEffect} from "react";
-import {useAnchorWallet} from "@solana/wallet-adapter-react";
-import {useParams} from "react-router-dom";
-import {useStores} from "context/StoreComponent";
+import { useEffect } from "react";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { useParams } from "react-router-dom";
+import { useStores } from "context/StoreComponent";
 import LiquidityCard from "components/market-details/LiquidityCard";
 import SharesCard from "components/markets/SharesCard";
-import {observer} from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
 import InfoCard from "components/market-details/InfoCard";
+import Background from "assets/Hero.png";
+import AboutCard from "components/market-details/AboutCard";
+import { formatToSol } from "utils";
 
 const SharesView = observer(() => {
-    const {marketStore} = useStores();
+    const { marketStore } = useStores();
+    // marketStore.selectedShares.forEach((i, k) => {
+    //     console.log(formatToSol(i.account.yesShares));
+    // });
 
-    return (
-        <SharesCard shares={marketStore.selectedShares}/>
-    );
+    return <SharesCard shares={marketStore.selectedShares} />;
 });
 
 const LiquidityView = observer(() => {
-    return (
-        <LiquidityCard/>
-    );
+    return <LiquidityCard />;
 });
 
-
 const ShowMarketPage = () => {
-    const {marketStore} = useStores();
-    const {id} = useParams();
+    const { marketStore } = useStores();
+    const market = marketStore.selectedMarket;
+    console.log(market);
+
+    const { id } = useParams();
+    // let creatorAddress = market.creator.toBase58();
+    // creatorAddress = creatorAddress.slice(0, 4) + '..' + creatorAddress.slice(-4);
 
     const wallet = useAnchorWallet();
     useEffect(() => {
-        marketStore.getMarket(id).then(console.log)
-        marketStore.getShares(id).then(console.log)
+        marketStore.getMarket(id).then(console.log);
+        marketStore.getShares(id).then(console.log);
     }, [wallet]);
 
     return (
-        <div className="bg-black text-white/95 px-8 lg:px-36 py-32 w-full space-y-12 h-screen">
-            <InfoCard/>
-            {/*<ChartCard/>*/}
-            <div className='flex flex-col sm:flex-row justify-between space-y-6 sm:space-y-0 sm:space-x-5'>
-                <BuySellCard/>
-                <LiquidityView/>
-                {/*<LPCard />*/}
-            </div>
-            <div className='flex justify-between items-center space-x-6'>
-                <SharesView/>
+        <div
+            className="w-full min-h-screen bg-no-repeat bg-cover bg-white text-black pb-0 space-y-5"
+            style={{ backgroundImage: `url(${Background}` }}
+        >
+            <div className="xl:px-16 xl:mx-16 px-5">
+                <InfoCard />
+                {/*<ChartCard/>*/}
+                <div className="m-2 p-5 pb-0 flex flex-wrap justify-between -mx-2">
+                    <div className="lg:w-[68%] md:w-[65%] p-3">
+                        <AboutCard />
+                    </div>
+                    <div className="lg:w-[29%] md:w-[35%] p-3">
+                        <BuySellCard />
+                        <LiquidityView />
+                    </div>
+                    <SharesView />
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ShowMarketPage
+export default ShowMarketPage;
