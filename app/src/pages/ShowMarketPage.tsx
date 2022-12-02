@@ -13,10 +13,6 @@ import { formatToSol } from "utils";
 
 const SharesView = observer(() => {
     const { marketStore } = useStores();
-    // marketStore.selectedShares.forEach((i, k) => {
-    //     console.log(formatToSol(i.account.yesShares));
-    // });
-
     return <SharesCard shares={marketStore.selectedShares} />;
 });
 
@@ -55,7 +51,7 @@ const ShowMarketPage = () => {
                         <BuySellCard />
                         <LiquidityView />
                     </div>
-                    <SharesView />
+                    {/* <SharesView /> */}
                 </div>
             </div>
         </div>

@@ -8,7 +8,8 @@ import RefreshButton from "./RefreshButton";
 import BuySellButton from "./BuySellButton";
 import BigNumber from "bignumber.js";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { usdToSol } from "utils";
+import { formatToSol, usdToSol } from "utils";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
 
 const BuySellCard = observer(() => {
     const { marketStore } = useStores();
@@ -18,6 +19,8 @@ const BuySellCard = observer(() => {
     const [action, setAction] = useState("buy");
     const [possibleShares, setPossibleShares] = useState("");
     const [possibleSharesError, setPossibleSharesError] = useState("");
+    const [userShares, setUserShares] = useState({ yes: "0", no: "0" });
+    const wallet = useAnchorWallet();
 
     useEffect(() => {
         if (marketStore.selectedMarket === null) {
@@ -31,6 +34,13 @@ const BuySellCard = observer(() => {
             s = calcSellAmount(outcome, amount);
         }
         setPossibleShares(s);
+        marketStore.selectedShares.forEach((i, k) => {
+            if (wallet?.publicKey == i.account.authority) {
+                let yesShares = formatToSol(i.account.yesShares);
+                let noShares = formatToSol(i.account.noShares);
+                setUserShares({ yes: yesShares, no: noShares });
+            }
+        });
     });
 
     if (marketStore.selectedMarket === null) {
@@ -244,7 +254,7 @@ const BuySellCard = observer(() => {
                     </div>
                     <div className="flex flex-wrap justify-between text-lg">
                         <div>Estimated Shares Bought</div>
-                        <div>0.00</div>
+                        <div>{outcome == "Y" ? userShares.yes : userShares.no}</div>
                     </div>
                     <div className="flex flex-wrap justify-between text-lg">
                         <div>Maximum Winnings</div>
