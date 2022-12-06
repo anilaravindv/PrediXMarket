@@ -39,8 +39,21 @@ const AboutCard = observer((props: any) => {
                     <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
                         Resolution Source
                         <br />
-                        <a href={market.resolutionSource} className="text-blue-700">
+                        {market.resolver === "pyth" ? 
+                        <a href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`} className="text-blue-700">
                             {market.resolutionSource}
+                        </a> : <a href={market.resolutionSource} className="text-blue-700">
+                            {market.resolutionSource}
+                        </a>}
+
+                    </div>
+                </div>
+                <div>
+                    <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
+                        Resolution Type
+                        <br />
+                        <a href={market.resolver} className="text-blue-700">
+                            {market.resolver}
                         </a>
                     </div>
                 </div>

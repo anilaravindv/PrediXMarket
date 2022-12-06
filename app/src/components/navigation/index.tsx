@@ -58,7 +58,7 @@ const Navigation = () => {
                                 <Link to="/portfolio">Portfolio</Link>
                                 <Link to="/leaderboard">Leaderboard</Link>
                             </>
-                            ) : null
+                            ) : <Link to="/markets">Markets</Link>
                         }
                         {
                             connected ? <WalletDisconnectButton/> : <WalletMultiButton/>
@@ -89,7 +89,7 @@ const Navigation = () => {
                                         <Link to="/portfolio" onClick={() => setIsNavOpen(false)}>Portfolio</Link>
                                         <Link to="/leaderboard" onClick={() => setIsNavOpen(false)}>Leaderboard</Link>
                                     </>
-                                ) : null
+                                ) : <Link to="/markets">Markets</Link>
                             }
                             {
                                 connected

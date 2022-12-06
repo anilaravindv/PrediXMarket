@@ -23,7 +23,7 @@ const LiquidityView = observer(() => {
 const ShowMarketPage = () => {
     const { marketStore } = useStores();
     const market = marketStore.selectedMarket;
-    console.log(market);
+    console.log("show market page : ", market);
 
     const { id } = useParams();
     // let creatorAddress = market.creator.toBase58();
@@ -33,7 +33,7 @@ const ShowMarketPage = () => {
     useEffect(() => {
         marketStore.getMarket(id).then(console.log);
         marketStore.getShares(id).then(console.log);
-    }, [wallet]);
+    }, [true]);
 
     return (
         <div

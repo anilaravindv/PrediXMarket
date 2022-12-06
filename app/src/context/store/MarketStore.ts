@@ -99,6 +99,11 @@ export default class MarketStore {
     }
 
     @action
+    async deleteMarket(marketAddress: any) {
+        return api.deleteMarket(marketAddress);
+    }
+
+    @action
     async closeMarketWithPyth(market: any) {
         await api.closeMarketWithPyth(market.address, market.resolutionSource);
     }

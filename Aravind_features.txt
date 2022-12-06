@@ -1,0 +1,7 @@
+1. create market - cryto and science &tech
+2. image database - Use S3 bucket to upload images and get a URL
+3. delete market
+4. resolution source hlink to solscan.
+5. show resolution type in about market.
+6. show close market status in market buy/sell box.
+7. show markets even wallet is disconnected.

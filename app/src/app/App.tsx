@@ -28,17 +28,13 @@ function App() {
                 <Route
                     path="/markets"
                     element={
-                        <RequireAuth>
-                            <MarketsPage/>
-                        </RequireAuth>
+                        <MarketsPage/>
                     }
                 />
                 <Route
                     path="/markets/:id"
                     element={
-                        <RequireAuth>
-                            <ShowMarketPage/>
-                        </RequireAuth>
+                        <ShowMarketPage/>
                     }
                 />
                 <Route

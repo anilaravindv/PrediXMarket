@@ -275,6 +275,9 @@ const BuySellCard = observer(() => {
                     >
                         {(action == "buy" ? "Buy " : "Sell ") + (outcome == "Y" ? "Yes " : "No ") + " shares"}
                     </button>
+                    {  isClosedForTrading() && <div className="flex flex-wrap justify-between text-lg text-red-500">
+                        <div>Market is Closed for Trading</div>
+                    </div>}
                 </div>
             </div>
         </>

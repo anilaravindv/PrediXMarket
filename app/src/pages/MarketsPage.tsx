@@ -18,11 +18,12 @@ const marketCategories = [
 
 const MarketsViewComponent = observer(() => {
     const { marketStore } = useStores();
-
+    var maerkets;
     const wallet = useAnchorWallet();
     useEffect(() => {
-        marketStore.getMarkets().then(console.log);
-    }, [wallet]);
+        marketStore.getMarkets().then(() => {maerkets = marketStore.markets; console.log("csa", maerkets);});
+        console.log("get markets here")
+    }, [true]);
 
     return (
         <>
