@@ -4,7 +4,7 @@ import { getDialogUtilityClass } from "@mui/material";
 
 
 export async function getMarket(marketAddress) {
-    const workspace = getWorkspace();
+    const workspace = getDummyWorkspace();
     if (!workspace.isReady) {
         return Promise.reject(new Error('workspace not ready'));
     }

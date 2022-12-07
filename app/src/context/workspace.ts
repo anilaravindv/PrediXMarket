@@ -71,9 +71,18 @@ export function getDummyWorkspace(): Workspace {
         {}
     );
     
-    workspace.isReady = true;
-    workspace.provider = provider;
-    workspace.programId = new PublicKey(idl.metadata.address);
-    workspace.program = new Program(idl as Idl, workspace.programId,provider);
-    return workspace;
+    let workspace2: Workspace = {
+        isReady: false,
+        wallet: null,
+        provider: null,
+        programId: null,
+        program: null,
+        connection,
+    };
+
+    workspace2.isReady = true;
+    workspace2.provider = provider;
+    workspace2.programId = new PublicKey(idl.metadata.address);
+    workspace2.program = new Program(idl as Idl, workspace2.programId,provider);
+    return workspace2;
 }
