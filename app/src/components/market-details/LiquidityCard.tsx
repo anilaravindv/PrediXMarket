@@ -28,6 +28,17 @@ const LiquidityCard = observer(() => {
         setAmount(e.target.value);
     }
 
+    function handleClaimLiquidityFees() {
+        marketStore.claimLiquidityFees(marketStore.selectedMarket.address)
+            .then(() => {
+                alert("Liquidity fees claimed successfully");
+            })
+            .catch(e => {
+                alert("An error occurred while claiming liquidity fees");
+                console.error(e);
+            });
+    }
+
     function handleAddRemove() {
         if (action === "add") {
             marketStore
@@ -142,6 +153,7 @@ const LiquidityCard = observer(() => {
                     className="!my-4 w-full !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
                 />
             </div>
+
         </div>
     );
 });

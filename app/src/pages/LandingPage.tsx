@@ -14,19 +14,13 @@ const LandingPage = () => {
              style={{backgroundImage: `url(${Background})`}}>
             <div className="flex justify-center items-center flex-col space-y-8 pt-10">
                 <div className="text-6xl sm:text-7xl lg:text-8xl font-bold text-center">Bet on your Opinions</div>
-                <div className="text-base font-medium w-3/5 text-center">PerpCrypto is a information
+                <div className="text-base font-medium w-3/5 text-center">PredixMarket is a information
                     markets platform, built on Solana.
                 </div>
                 {
-                    connected ? (
-                        <Link to="/markets">
-                            <CustomButton title={"Explore Markets"} bgColor={"transparent"} bgHover={"transparent"}
-                                          borderRadius={"24px"} endIcon={<BsArrowRight/>} border={"2px solid #000"}
-                                          textColor={"#000000"} padding={"7px 35px"}/>
-                        </Link>
-                    ) : (
-                        <CustomButton
-                            title={"Connect Your Wallet To Explore Markets..."}
+                    <Link to="/markets">
+                            <CustomButton
+                            title={"Explore Markets"}
                             bgColor={"rgba(119,40,164,0.33)"}
                             bgHover={"rgba(119,40,164,0.44)"}
                             borderRadius={"24px"}
@@ -34,8 +28,7 @@ const LandingPage = () => {
                             border={"2px solid #000"}
                             textColor={"#1a1515"}
                             padding={"7px 35px"}
-                            onClick={() => (setVisible(true))}/>
-                    )
+                            /></Link>
                 }
             </div>
         </div>

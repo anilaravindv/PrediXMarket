@@ -50,6 +50,7 @@ const columns: GridColDef[] = [
     {
         field: 'wonPredictions', headerName: 'Won Predictions', width: 150, sortable: false,
         renderCell: (params) => (
+            
             <div className='font-normal text-sm text-right w-full sm:pr-8'>
                 <p>{params.value}</p>
             </div>

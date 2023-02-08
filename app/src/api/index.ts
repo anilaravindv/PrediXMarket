@@ -4,6 +4,7 @@ export * from './addLiquidity';
 export * from './removeLiquidity';
 export * from './markets';
 export * from './createMarket';
+export * from './deleteMarket';
 export * from './closeMarket';
 export * from './shares';
 export * from './isAdmin';

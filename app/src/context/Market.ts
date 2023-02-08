@@ -10,4 +10,5 @@ export interface Market {
     about: string,
     resolution_source: string,
     resolver: string,
+    category: string,
 }

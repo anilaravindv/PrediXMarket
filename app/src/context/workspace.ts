@@ -1,5 +1,6 @@
 import {clusterApiUrl, Connection, ConnectionConfig, PublicKey} from "@solana/web3.js";
-import {AnchorProvider, Idl, Program} from "@project-serum/anchor";
+import {AnchorProvider, Idl, Program, web3} from "@project-serum/anchor";
+// import {Wallet as AnchorWallet} from "@project-serum/anchor";
 // import idl from "../../../target/idl/marketplace.json";
 import idl from "../../../target/idl/marketplace.json";
 // import idl from "idl/marketplace.json";
@@ -55,4 +56,33 @@ export function setWallet(w: Wallet | null) {
 
 export function getWorkspace(): Workspace {
     return workspace;
+}
+
+export function getDummyWorkspace(): Workspace {
+
+    // Create your Anchor Provider that rejects when it signs anything.This is a provider used when wallet is not connected
+    const provider = new AnchorProvider(
+        connection,
+        {
+            signTransaction: () => Promise.reject(),
+            signAllTransactions: () => Promise.reject(),
+            publicKey: web3.Keypair.generate().publicKey,
+        },
+        {}
+    );
+    
+    let workspace2: Workspace = {
+        isReady: false,
+        wallet: null,
+        provider: null,
+        programId: null,
+        program: null,
+        connection,
+    };
+
+    workspace2.isReady = true;
+    workspace2.provider = provider;
+    workspace2.programId = new PublicKey(idl.metadata.address);
+    workspace2.program = new Program(idl as Idl, workspace2.programId,provider);
+    return workspace2;
 }

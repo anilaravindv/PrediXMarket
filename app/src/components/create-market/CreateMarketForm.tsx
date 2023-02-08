@@ -15,7 +15,7 @@ const CreateMarketForm = ({initialValues, onSubmit}) => {
                     .max(200, 'Must be 200 characters or less')
                     .required('Required'),
                 about: yup.string()
-                    .max(300, 'Must be 300 characters or less')
+                    .max(2000, 'Must be 2000 characters or less')
                     .required('Required'),
                 expiresAt: yup.date()
                     .min(minExpDate, 'Must be future date')
@@ -94,6 +94,8 @@ const CreateMarketForm = ({initialValues, onSubmit}) => {
                         <option value="sports">Sports</option>
                         <option value="politics">Politics</option>
                         <option value="economics">Economics</option>
+                        <option value="crypto">Crypto</option>
+                        <option value="science & tech">Science & Technology</option>
                     </Field>
                     <InputErrorMessage name="category"/>
 

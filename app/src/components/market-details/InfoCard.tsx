@@ -4,16 +4,21 @@ import { formatToSol } from "utils";
 import React from "react";
 import Button from "@mui/material/Button";
 import moment from "moment";
+import CustomButton from "components/common/CustomButton";
+import { isAdmin } from "auth";
+import { DateTime } from "luxon";
 
 const InfoCard = observer((props: any) => {
     const { marketStore, profileStore } = useStores();
-
+    var isAdminWallet = false;
     if (marketStore.selectedMarket === null) {
         return <>Loading...</>;
     }
 
-    const market = marketStore.selectedMarket;
+    profileStore.isAdmin().then(console.log);
+    isAdminWallet = profileStore.isAdminUser; 
 
+    const market = marketStore.selectedMarket;
     let creatorAddress = market.creator.toBase58();
     creatorAddress = creatorAddress.slice(0, 4) + ".." + creatorAddress.slice(-4);
 
@@ -79,13 +84,16 @@ const InfoCard = observer((props: any) => {
     }
 
     function getMarketState() {
+        console.log("market state ", market );
         return Object.keys(market.state)[0].toUpperCase() || "";
     }
 
     function getMarketStateText() {
         let t = getMarketState();
+        
         if (isMarketResolved()) {
-            t = t + "(" + Object.keys(market.state.resolved.outcome)[0].toUpperCase() + ")";
+            //t = t + "(" + Object.keys(market.state.resolved.outcome)[0].toUpperCase() + ")";
+            t = Object.keys(market.state.resolved.outcome)[0].toUpperCase();
         }
 
         return t;
@@ -112,6 +120,22 @@ const InfoCard = observer((props: any) => {
         return getMarketState() === "RESOLVED";
     }
 
+    function isClosedForTrading() {
+        let isClosed = Object.keys(marketStore.selectedMarket.state)[0].toUpperCase() != "OPEN";
+        let isExpired = marketStore.selectedMarket.expiresAt <= DateTime.now();
+        return isClosed || isExpired;
+    }
+
+    function deleteMarketHandler(){
+        marketStore
+        .deleteMarket(marketStore.selectedMarket.address)
+        .then(() => {
+            alert("market deleted successfully");
+        })
+        .catch((e) => {
+            console.log("An error occurred while deleting market");
+        });
+    }
     return (
         // <div className='border-amber-200 border-2 p-4 flex justify-center items-center rounded-xl space-x-6'>
         //     <div className="flex space-y-10">
@@ -327,7 +351,59 @@ const InfoCard = observer((props: any) => {
                     <div className="px-4 border-x border-gray-400">{formatToSol(market.volume)}</div>
                     <div className="pl-4">Liquidity - {formatToSol(market.liquidity)}</div>
                 </div>
+                <div className="flex flex-wrap justify-left pt-2">
+                    {isAdminWallet && <button type="submit"
+                        onClick={deleteMarketHandler}
+                        className="!my-4 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
+                        Delete Market
+                    </button>}
+                    <CustomButton
+                        onClick={handleClaimLiquidityFees}
+                        title={"Claim Liquidity Fees"}
+                        className="!my-4 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
+                    />
+                </div>
+                <div className="flex justify-left pt-2">
+                    {profileStore.isAdminUser && isMarketOpen() && <div>
+                        <button type="submit"
+                        onClick={handleCloseWithAnswer}
+                        className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
+                        Close with Answer
+                        </button>
+                        {market.resolver === 'pyth' && <CustomButton
+                            onClick={handleCloseWithPyth}
+                            title={"Close with Pyth"}
+                            className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
+                        />}
+                    </div>}
+                </div>
+                <div className="flex justify-left pt-2">
+                    {isMarketResolved() && <div>
+                        <button type="submit"
+                        onClick={handleClaimLiquidity}
+                        className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
+                        Claim Liquidity Earnings
+                        </button>
+                        {<CustomButton
+                            onClick={handleClaimWinnings}
+                            title={"Claim Winnings"}
+                            className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
+                        />}
+                    </div>}
+                </div>
+                <div className="flex justify-end">
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "pyth" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is closed with{" "}{market.resolver}, Outcome : {getMarketStateText()}
+                    </div>}
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "admin" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is closed with an Answer by Admin , Outcome : {getMarketStateText()}
+                    </div>}
+                    {isClosedForTrading() && getMarketState() == "OPEN" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is expired and closed for trading
+                    </div>}
+                </div>
             </div>
+
         </div>
     );
 });

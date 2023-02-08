@@ -43,7 +43,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footerBot text-sm p-5 pb-8 mt-5 text-center">
-                <div className="border-t border-gray-400 pt-3"> © 2022 Perp Crypto. All rights reserved.</div>
+                <div className="border-t border-gray-400 pt-3"> © 2022 PredixMarket. All rights reserved.</div>
             </div>
         </>
     );

@@ -16,6 +16,7 @@ import WorkspaceUpdater from "components/WorkspaceUpdater";
 import MarketEventHandler from "components/MarketEventHandler";
 import RequireAuth from "components/auth/RequireAuth";
 
+
 function App() {
     const [rootStore] = useState(new RootStore());
     return <StoreProvider store={rootStore}>
@@ -28,17 +29,13 @@ function App() {
                 <Route
                     path="/markets"
                     element={
-                        <RequireAuth>
-                            <MarketsPage/>
-                        </RequireAuth>
+                        <MarketsPage/>
                     }
                 />
                 <Route
                     path="/markets/:id"
                     element={
-                        <RequireAuth>
-                            <ShowMarketPage/>
-                        </RequireAuth>
+                        <ShowMarketPage/>
                     }
                 />
                 <Route

@@ -70,12 +70,12 @@ const MarketCard = ({ market }: IMarketCardProps) => {
                     <div className="text-xs">{moment(market.createdAt).fromNow()}</div>
                     <div className="flex flex-wrap mt-8 border-t border-gray-400 -mx-3 text-sm font-bold">
                         <div className="w-1/2 py-3 pl-3">
-                            <div>Liquidity</div>
-                            <div>{formatToSol(market.liquidity)}</div>
+                            <div>Yes</div>
+                            <div>{yesOutcomeSharePrice}</div>
                         </div>
                         <div className="w-1/2 border-l border-gray-400 py-3 pl-3">
-                            <div>Volume</div>
-                            <div className="text-green-600">{formatToSol(market.volume)}</div>
+                            <div>No</div>
+                            <div className="text-green-600">{noOutcomeSharePrice}</div>
                         </div>
                     </div>
                 </div>

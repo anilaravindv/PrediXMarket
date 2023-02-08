@@ -19,6 +19,8 @@ export default function Table({rows, columns, height, defaultPageSize}) {
                 onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
                 rowsPerPageOptions={[5, 10, 20]}
                 disableColumnMenu
+                disableSelectionOnClick
+                disableDensitySelector
                 components={{
                     ColumnSortedDescendingIcon: SortedDescendingIcon,
                     ColumnSortedAscendingIcon: SortedDescendingIcon,
@@ -27,21 +29,18 @@ export default function Table({rows, columns, height, defaultPageSize}) {
                     boxShadow: 2,
                     border: 2,
                     borderColor: '#101010',
-                    color: "#ffffff",
+                    color: "#000000",
                     ":hover": {
-                        color: "#ffffff",
+                        color: "#000000",
                     },
                     '& .MuiDataGrid-cell:hover': {
                         color: '#',
                     },
                     '& .MuiTablePagination-root': {
-                        color: '#fff',
+                        color: '#000',
                     },
                     '& .MuiIconButton-root': {
-                        color: '#fff',
-                    },
-                    '& .MuiDataGrid-columnSeparator': {
-                        display: 'none'
+                        color: '#000',
                     },
                     '& .MuiDataGrid-footerContainer': {
                         display: 'block',
@@ -51,9 +50,9 @@ export default function Table({rows, columns, height, defaultPageSize}) {
                         display: 'none'
                     },
                     '& .Mui-disabled': {
-                        color: "#ffffff !important"
+                        color: "#000000 !important"
                     },
-                    '& .MuiDataGrid-root .MuiDataGrid-cell:focus-within': {
+                    '&.MuiDataGrid-cell:focus-within .MuiDataGrid-cell:focus': {
                         outline: 'none !important'
                     },
                     '& div div div div >.MuiDataGrid-cell': {
