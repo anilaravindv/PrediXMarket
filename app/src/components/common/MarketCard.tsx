@@ -2,6 +2,7 @@ import moment from "moment";
 import React from "react";
 import { FiHeart } from "react-icons/fi";
 import { formatToSol } from "utils";
+import { toSol } from "../../utils";
 
 interface IMarketCardProps {
     market: any;
@@ -59,23 +60,39 @@ const MarketCard = ({ market }: IMarketCardProps) => {
             </div>
         </div> */}
             <div>
-                <div className="bg-white/75 border-gray-400 border p-3 pb-0 rounded-lg overflow-hidden">
-                    <div className="-m-3 mb-0">
-                        <img className="w-full h-48" src={market.imageUrl} alt="" />
+                <div className="bg-white border-[#f6f6f6] border p-4 rounded-xl shadow-sm overflow-hidden">
+                    <div className="grid grid-cols-4 mb-8">
+                        <div className="w-20 h-20 col-span-1">
+                            <img
+                                className="w-20 h-20 rounded-xl border-[#f6f6f6] border"
+                                src={market.imageUrl}
+                                alt=""
+                            />
+                        </div>
+                        <div className="text-black col-span-3 ml-3">
+                            <div className="font-light text-sm mb-1">{market.category}</div>
+                            <div className="text-[15px] font-normal pb-2">{market.name}</div>
+                        </div>
                     </div>
-                    <div className="bg-green-700 text-white font-bold text-xs w-max  rounded-md mt-4 px-3 py-1">
-                        {market.category}
-                    </div>
-                    <div className="text-xl font-bold pb-2 pt-3 text-justify min-h-[120px]">{market.name}</div>
-                    <div className="text-xs">{moment(market.createdAt).fromNow()}</div>
-                    <div className="flex flex-wrap mt-8 border-t border-gray-400 -mx-3 text-sm font-bold">
-                        <div className="w-1/2 py-3 pl-3">
-                            <div>Yes</div>
+                    {/* <div className="text-xs">{moment(market.createdAt).fromNow()}</div> */}
+                    <div className="flex flex-wrap text-white text-sm font-normal mb-3">
+                        <div className="w-1/2 py-1 pl-3 flex rounded-l-md bg-green-500 border-r-[0.5px] border-r-white">
+                            <div>Yes&nbsp;</div>
                             <div>{yesOutcomeSharePrice}</div>
                         </div>
-                        <div className="w-1/2 border-l border-gray-400 py-3 pl-3">
-                            <div>No</div>
-                            <div className="text-green-600">{noOutcomeSharePrice}</div>
+                        <div className="w-1/2 py-1 pl-3 flex rounded-r-md border-l-[0.5px] border-l-white bg-red-500">
+                            <div>No&nbsp;</div>
+                            <div>{noOutcomeSharePrice}</div>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap text-[15px] text-black gap-6">
+                        <div>
+                            ${formatToSol(market.volume)}
+                            <span className="text-[#777777]">Vol.</span>
+                        </div>
+                        <div>
+                            ${formatToSol(market.liquidity)}
+                            <span className="text-[#777777]">Liq.</span>
                         </div>
                     </div>
                 </div>

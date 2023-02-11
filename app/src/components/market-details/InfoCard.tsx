@@ -16,7 +16,7 @@ const InfoCard = observer((props: any) => {
     }
 
     profileStore.isAdmin().then(console.log);
-    isAdminWallet = profileStore.isAdminUser; 
+    isAdminWallet = profileStore.isAdminUser;
 
     const market = marketStore.selectedMarket;
     let creatorAddress = market.creator.toBase58();
@@ -84,13 +84,13 @@ const InfoCard = observer((props: any) => {
     }
 
     function getMarketState() {
-        console.log("market state ", market );
+        console.log("market state ", market);
         return Object.keys(market.state)[0].toUpperCase() || "";
     }
 
     function getMarketStateText() {
         let t = getMarketState();
-        
+
         if (isMarketResolved()) {
             //t = t + "(" + Object.keys(market.state.resolved.outcome)[0].toUpperCase() + ")";
             t = Object.keys(market.state.resolved.outcome)[0].toUpperCase();
@@ -126,15 +126,15 @@ const InfoCard = observer((props: any) => {
         return isClosed || isExpired;
     }
 
-    function deleteMarketHandler(){
+    function deleteMarketHandler() {
         marketStore
-        .deleteMarket(marketStore.selectedMarket.address)
-        .then(() => {
-            alert("market deleted successfully");
-        })
-        .catch((e) => {
-            console.log("An error occurred while deleting market");
-        });
+            .deleteMarket(marketStore.selectedMarket.address)
+            .then(() => {
+                alert("market deleted successfully");
+            })
+            .catch((e) => {
+                console.log("An error occurred while deleting market");
+            });
     }
     return (
         // <div className='border-amber-200 border-2 p-4 flex justify-center items-center rounded-xl space-x-6'>
@@ -337,73 +337,94 @@ const InfoCard = observer((props: any) => {
         //         </div>
         //     </div>
         // </div>
-        <div className="pt-32 px-6">
-            <div className="flex iconTxt">
-                <div className="w-[50px] h-[50px]">
-                    <img className="rounded-full h-[50px]" src={market.imageUrl} alt="" />
-                </div>
-                <div className="ml-4 bg-gray-300 self-center px-3 py-1 rounded">{market.category}</div>
+        <div className="pt-36 flex sm:flex-row flex-col">
+            <div className="flex iconTxt mr-4 justify-center sm:justify-start">
+                <img className="rounded-full w-24 h-24" src={market.imageUrl} alt="" />
             </div>
-            <div className="pl-[70px]">
-                <div className="text-3xl font-semibold">{market.name}</div>
-                <div className="flex pt-2">
-                    <div className="pr-4">Expiration - {moment(market.expiresAt).format("DD-MMM-YYYY")}</div>
-                    <div className="px-4 border-x border-gray-400">{formatToSol(market.volume)}</div>
-                    <div className="pl-4">Liquidity - {formatToSol(market.liquidity)}</div>
+            <div className="sm:col-span-7 text-center sm:text-left mt-4 sm:mt-0">
+                <div className="text-[15px] font-light">{market.category}</div>
+                <div className="text-xl text-[#272727] font-normal my-2">{market.name}</div>
+                <div className="flex text-[15px] sm:flex-row flex-col">
+                    <div className="pr-4 text-red-500 font-light">
+                        Expiration - {moment(market.expiresAt).format("DD-MMM-YYYY")}
+                    </div>
+                    <div className="px-4">${formatToSol(market.volume)} Vol.</div>
+                    <div className="px-4">${formatToSol(market.liquidity)} Liq.</div>
                 </div>
-                <div className="flex flex-wrap justify-left pt-2">
-                    {isAdminWallet && <button type="submit"
-                        onClick={deleteMarketHandler}
-                        className="!my-4 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
-                        Delete Market
-                    </button>}
+                <div className="flex flex-wrap justify-center sm:justify-start pt-2">
+                    {isAdminWallet && (
+                        <button
+                            type="submit"
+                            onClick={deleteMarketHandler}
+                            className="!mt-4 !mx-2 w-25 !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
+                        >
+                            Delete Market
+                        </button>
+                    )}
                     <CustomButton
                         onClick={handleClaimLiquidityFees}
                         title={"Claim Liquidity Fees"}
-                        className="!my-4 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
+                        className="!mt-4 w-25 !bg-navy px-3 py-2 !rounded text-white !text-lg !font-medium hover:opacity-90"
                     />
                 </div>
                 <div className="flex justify-left pt-2">
-                    {profileStore.isAdminUser && isMarketOpen() && <div>
-                        <button type="submit"
-                        onClick={handleCloseWithAnswer}
-                        className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
-                        Close with Answer
-                        </button>
-                        {market.resolver === 'pyth' && <CustomButton
-                            onClick={handleCloseWithPyth}
-                            title={"Close with Pyth"}
-                            className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
-                        />}
-                    </div>}
+                    {profileStore.isAdminUser && isMarketOpen() && (
+                        <div>
+                            <button
+                                type="submit"
+                                onClick={handleCloseWithAnswer}
+                                className="!my-2 !mx-2 w-25 !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
+                            >
+                                Close with Answer
+                            </button>
+                            {market.resolver === "pyth" && (
+                                <CustomButton
+                                    onClick={handleCloseWithPyth}
+                                    title={"Close with Pyth"}
+                                    className="!my-2 !mx-2 w-25 !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
+                                />
+                            )}
+                        </div>
+                    )}
                 </div>
                 <div className="flex justify-left pt-2">
-                    {isMarketResolved() && <div>
-                        <button type="submit"
-                        onClick={handleClaimLiquidity}
-                        className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600">
-                        Claim Liquidity Earnings
-                        </button>
-                        {<CustomButton
-                            onClick={handleClaimWinnings}
-                            title={"Claim Winnings"}
-                            className="!my-2 !mx-2 w-25 !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
-                        />}
-                    </div>}
+                    {isMarketResolved() && (
+                        <div>
+                            <button
+                                type="submit"
+                                onClick={handleClaimLiquidity}
+                                className="!my-2 !mx-2 w-25 !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
+                            >
+                                Claim Liquidity Earnings
+                            </button>
+                            {
+                                <CustomButton
+                                    onClick={handleClaimWinnings}
+                                    title={"Claim Winnings"}
+                                    className="!my-2 !mx-2 w-25 !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
+                                />
+                            }
+                        </div>
+                    )}
                 </div>
                 <div className="flex justify-end">
-                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "pyth" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
-                        Market is closed with{" "}{market.resolver}, Outcome : {getMarketStateText()}
-                    </div>}
-                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "admin" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
-                        Market is closed with an Answer by Admin , Outcome : {getMarketStateText()}
-                    </div>}
-                    {isClosedForTrading() && getMarketState() == "OPEN" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
-                        Market is expired and closed for trading
-                    </div>}
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "pyth" && (
+                        <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-navy">
+                            Market is closed with {market.resolver}, Outcome : {getMarketStateText()}
+                        </div>
+                    )}
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "admin" && (
+                        <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-navy">
+                            Market is closed with an Answer by Admin , Outcome : {getMarketStateText()}
+                        </div>
+                    )}
+                    {isClosedForTrading() && getMarketState() == "OPEN" && (
+                        <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-navy">
+                            Market is expired and closed for trading
+                        </div>
+                    )}
                 </div>
             </div>
-
         </div>
     );
 });

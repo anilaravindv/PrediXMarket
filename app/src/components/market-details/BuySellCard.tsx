@@ -180,9 +180,9 @@ const BuySellCard = observer(() => {
 
     return (
         <>
-            <div className="box1 bg-violet-100 rounded border border-violet-300 p-3">
-                <div className="buySell pt-5">
-                    <div className="toggleBtn flex flex-wrap justify-center mx-1">
+            <div className="box1 bg-white rounded border border-[#e5e5e5] pb-5">
+                <div className="buySell">
+                    <div className="toggleBtn flex flex-wrap border-b border-b-[#e5e5e5]">
                         <BuySellButton
                             action={"buy"}
                             selectedAction={action}
@@ -198,17 +198,17 @@ const BuySellCard = observer(() => {
                     </div>
                 </div>
 
-                <div className="outCome flex flex-wrap pt-4 justify-center items-center text-md font-semibold">
-                    <div className="w-1/2 text-center  text-sm">Pick Outcome</div>
-                    <button
+                <div className="outCome flex flex-wrap pt-4 px-5 items-center text-md font-semibold">
+                    <div className="text-lg font-semibold">Outcome</div>
+                    {/* <button
                         className="py-1  text-center px-2 cursor-pointer border border-gray-400 rounded text-white bg-gray-500 text-sm"
                         onClick={refreshPrices}
                     >
                         Refresh Prices
-                    </button>
+                    </button> */}
                 </div>
 
-                <div className="flex flex-wrap justify-center pt-4">
+                <div className="flex flex-wrap justify-between gap-x-2 px-5 pt-2">
                     <OutcomeButton
                         outcome={"Y"}
                         selectedOutcome={outcome}
@@ -224,8 +224,8 @@ const BuySellCard = observer(() => {
                         onClick={handleOutcomeChange}
                     />
                 </div>
-                <div className="solWrap mt-4 px-4">
-                    <div className="text-lg font-semibold pb-2">SOL Amount (in USD)</div>
+                <div className="solWrap mt-5 px-5">
+                    <div className="text-lg font-semibold">Amount (in USD)</div>
                     <div className="">
                         <input
                             type="text"
@@ -234,9 +234,18 @@ const BuySellCard = observer(() => {
                             onChange={handleAmountChange}
                             disabled={isClosedForTrading()}
                             placeholder="Amount in USD"
-                            className="mt-1 block w-full rounded-lg"
+                            className="pt-2 block w-full rounded border text-lg border-[#e5e5e5]"
                         />
                     </div>
+
+                    <button
+                        className="my-4 w-full bg-navy p-3 rounded text-white text-lg font-semibold hover:opacity-90"
+                        onClick={handleBuySell}
+                        disabled={isClosedForTrading()}
+                    >
+                        {(action == "buy" ? "Buy " : "Sell ") + (outcome == "Y" ? "Yes " : "No ") + " shares"}
+                    </button>
+
                     <div className="font-semibold">
                         <BuySellSharesAmountText
                             possibleShares={possibleShares}
@@ -244,21 +253,21 @@ const BuySellCard = observer(() => {
                         />
                     </div>
                     <div className="font-semibold">Amount in Sol: {amount.toFixed(4)}</div>
-                    <div className="flex flex-wrap pt-4 justify-between text-lg text-gray-500">
+                    <div className="flex flex-wrap pt-4 justify-between font-medium">
                         <div>LP Fee</div>
-                        <div>2%</div>
+                        <div className="text-[#848484]">2%</div>
                     </div>
-                    {/* <div className="flex flex-wrap justify-between text-lg">
+                    {/* <div className="flex flex-wrap justify-between font-medium">
                         <div>Your Avg. Price</div>
                         <div>$0.00</div>
                     </div> */}
-                    <div className="flex flex-wrap justify-between text-lg">
+                    <div className="flex flex-wrap justify-between font-medium my-1">
                         <div>Estimated Shares Bought</div>
-                        <div>{possibleShares}</div>
+                        <div className="text-[#848484]">{possibleShares}</div>
                     </div>
-                    <div className="flex flex-wrap justify-between text-lg">
+                    <div className="flex flex-wrap justify-between font-medium">
                         <div>Maximum Winnings</div>
-                        <div>
+                        <div className="text-[#848484]">
                             {outcome == "Y"
                                 ? parseFloat(possibleShares) * (1 - yesOutcomeSharePrice)
                                 : parseFloat(possibleShares) * (1 - noOutcomeSharePrice)}
@@ -268,16 +277,12 @@ const BuySellCard = observer(() => {
                         <div>Max Return on Investment</div>
                         <div>0.00%</div>
                     </div> */}
-                    <button
-                        className="my-4 w-full bg-purple-900 p-3 rounded text-white text-lg font-semibold hover:bg-purple-600"
-                        onClick={handleBuySell}
-                        disabled={isClosedForTrading()}
-                    >
-                        {(action == "buy" ? "Buy " : "Sell ") + (outcome == "Y" ? "Yes " : "No ") + " shares"}
-                    </button>
-                    {  isClosedForTrading() && <div className="flex flex-wrap justify-between text-lg text-red-500">
-                        <div>Market is Closed for Trading</div>
-                    </div>}
+
+                    {isClosedForTrading() && (
+                        <div className="flex flex-wrap justify-between text-lg text-red-500">
+                            <div>Market is Closed for Trading</div>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

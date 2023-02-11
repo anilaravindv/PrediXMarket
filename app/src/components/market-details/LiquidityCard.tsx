@@ -29,11 +29,12 @@ const LiquidityCard = observer(() => {
     }
 
     function handleClaimLiquidityFees() {
-        marketStore.claimLiquidityFees(marketStore.selectedMarket.address)
+        marketStore
+            .claimLiquidityFees(marketStore.selectedMarket.address)
             .then(() => {
                 alert("Liquidity fees claimed successfully");
             })
-            .catch(e => {
+            .catch((e) => {
                 alert("An error occurred while claiming liquidity fees");
                 console.error(e);
             });
@@ -102,10 +103,10 @@ const LiquidityCard = observer(() => {
         //         </div>
         //     </div>
         // </div>
-        <div className="box2 mt-8 bg-white rounded border border-gray-300 p-4">
-            <div className="text-2xl font-bold">Manage Liquidity</div>
-            <div className="buySell pt-5">
-                <div className="toggleBtn flex flex-wrap justify-center">
+        <div className="box2 mt-8 bg-white rounded border border-[#e5e5e5] p-5">
+            <div className="text-lg font-semibold">Manage Liquidity</div>
+            <div className="buySell pt-2">
+                <div className="toggleBtn flex flex-wrap justify-between">
                     <AddRemoveLiquidityButton
                         action={"add"}
                         selectedAction={action}
@@ -134,11 +135,11 @@ const LiquidityCard = observer(() => {
                 <div>261%</div>
             </div> */}
 
-            <div className="solWrap mt-4 px-4">
+            <div className="solWrap mt-5">
                 <div className="text-lg font-semibold pb-2">USDC Amount</div>
                 <div className="">
                     <input
-                        className="w-full rounded"
+                        className="pt-2 block w-full rounded border text-lg border-[#e5e5e5]"
                         type="number"
                         name="amount"
                         value={amount}
@@ -150,10 +151,9 @@ const LiquidityCard = observer(() => {
                     onClick={handleAddRemove}
                     disabled={isClosedForTrading()}
                     title={(action == "add" ? "Add" : "Remove") + " liquidity"}
-                    className="!my-4 w-full !bg-purple-900 !p-3 !rounded text-white !text-lg !font-semibold !hover:bg-purple-600"
+                    className="!mt-4 w-full !bg-navy !p-3 !rounded text-white !text-lg !font-semibold hover:opacity-90"
                 />
             </div>
-
         </div>
     );
 });

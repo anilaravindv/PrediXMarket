@@ -7,10 +7,11 @@ import LiquidityCard from "components/market-details/LiquidityCard";
 import SharesCard from "components/markets/SharesCard";
 import { observer } from "mobx-react-lite";
 import InfoCard from "components/market-details/InfoCard";
-import Background from "assets/Hero.png";
 import AboutCard from "components/market-details/AboutCard";
 import { formatToSol } from "utils";
-import MarketStatsCard from "components/market-details/MarketStatsCard";
+import Background from "assets/images/bg.png";
+
+// import MarketStatsCard from "../components/market-details/MarketStatsCard";
 
 const SharesView = observer(() => {
     const { marketStore } = useStores();
@@ -38,18 +39,20 @@ const ShowMarketPage = () => {
 
     return (
         <div
-            className="w-full min-h-screen bg-no-repeat bg-cover bg-white text-black pb-0 space-y-5"
+            className="w-full min-h-screen bg-no-repeat bg-cover bg-white text-black pb-0 space-y-5 flex flex-col"
             style={{ backgroundImage: `url(${Background}` }}
         >
-            <div className="xl:px-16 xl:mx-16 px-5">
+            <div className="container px-3 mx-auto">
                 <InfoCard />
                 {/*<ChartCard/>*/}
-                <div className="m-2 p-5 pb-0 flex flex-wrap justify-between -mx-2">
-                    <div className="lg:w-[68%] md:w-[65%] p-3">
-                        <MarketStatsCard/>
+            </div>
+            <div className="bg-white border-t-[#e4e4e4] border-t">
+                <div className="m-2 pb-0 pt-5 grid grid-cols-12 flex-col-reverse flex-wrap justify-between container px-3 mx-auto">
+                    <div className="lg:col-span-8 col-span-12 lg:pr-4">
+                        {/* <MarketStatsCard /> */}
                         <AboutCard />
                     </div>
-                    <div className="lg:w-[29%] md:w-[35%] p-3">
+                    <div className="lg:col-span-4 col-span-12 lg:pl-4 -order-1 lg:order-1">
                         <BuySellCard />
                         <LiquidityView />
                     </div>

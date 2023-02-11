@@ -4,15 +4,12 @@ import { formatToSol } from "utils";
 import React from "react";
 import Button from "@mui/material/Button";
 
-
 const AboutCard = observer((props: any) => {
     const { marketStore, profileStore } = useStores();
 
     if (marketStore.selectedMarket === null) {
         return <>Loading...</>;
     }
-
-
 
     const market = marketStore.selectedMarket;
 
@@ -21,7 +18,7 @@ const AboutCard = observer((props: any) => {
 
     return (
         <>
-            <div className="graph border rounded-2xl overflow-hidden border-gray-300">
+            <div className="graph border rounded-2xl overflow-hidden">
                 <img className="w-[100%]" src="assets/graph.jpg" alt="" />
             </div>
             <div className="marketWrap mt-2">
@@ -36,42 +33,52 @@ const AboutCard = observer((props: any) => {
                     <div>Max. Payout</div>
                 </div>
                 <div className="py-6">No Market Positions</div> */}
-                <div className="text-3xl font-semibold">About this market</div>
+                <div className="text-2xl font-medium">About this market</div>
                 <div className="pt-2">{market.about}</div>
                 <div>
-                    <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
-                        Resolution Source
-                        <br />
-                        {market.resolver === "pyth" ? 
-                        <a href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`} target="_blank" className="text-blue-700">
-                            {market.resolutionSource}
-                        </a> : <a href={market.resolutionSource} target="_blank" className="text-blue-700">
-                            {market.resolutionSource}
-                        </a>}
-
+                    <div className="py-1 mt-4">
+                        Resolution Source:&nbsp;
+                        {market.resolver === "pyth" ? (
+                            <a
+                                href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`}
+                                target="_blank"
+                                className="text-blue-700"
+                            >
+                                {market.resolutionSource}
+                            </a>
+                        ) : (
+                            <a href={market.resolutionSource} target="_blank" className="text-blue-700">
+                                {market.resolutionSource}
+                            </a>
+                        )}
                     </div>
                 </div>
                 <div>
-                    <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
-                        Resolution Type
-                        <br />
-                        {market.resolver === "pyth"?  <a href={"https://pyth.network/"} target="_blank" className="text-blue-700">
-                            {market.resolver}
-                        </a> : 
-                        <a href={`https://solscan.io/account/${market.creator.toBase58()}?cluster=devnet`} target="_blank" className="text-blue-700">
-                        {market.resolver}
-                    </a>}
+                    <div className="py-1 mt-4">
+                        Resolution Type:&nbsp;
+                        {market.resolver === "pyth" ? (
+                            <a href={"https://pyth.network/"} target="_blank" className="text-blue-700">
+                                {market.resolver}
+                            </a>
+                        ) : (
+                            <a
+                                href={`https://solscan.io/account/${market.creator.toBase58()}?cluster=devnet`}
+                                target="_blank"
+                                className="text-blue-700"
+                            >
+                                {market.resolver}
+                            </a>
+                        )}
                     </div>
                 </div>
                 <div>
-                    <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
+                    <div className="py-1 mt-4">
                         Deployed by:
                         <a href="" className="text-blue-700">
                             {" "}
                             {market.creator.toBase58()}
                         </a>
                     </div>
-                    <br />
 
                     {/* <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
                         Resolver:

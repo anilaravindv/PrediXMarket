@@ -14,36 +14,36 @@ const footerLink = {
 const Footer = () => {
     return (
         <>
-            <div className="footer flex flex-wrap p-5 mt-12">
-                <div className="md:w-1/3  w-full">
-                    <div className="text-xl font-bold">Information</div>
-                    <ul>
-                        {footerLink.left.map(({ name, link }, k) => (
-                            <li key={k} className="py-1">
-                                <a href={link} className="hover:text-[#512da8]">
-                                    {name}{" "}
-                                    <span className="text-xs font-semibold bg-gray-300  py-1 px-2 rounded">SOON</span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+            <div className="w-full flex justify-center border-t border-[#e5e5e5]">
+                <div className="footer container px-3 flex-wrap py-16 grid sm:grid-cols-4 grid-cols-1 text-center">
+                    <div className="footerBot text-sm sm:text-left sm:col-span-2 mb-6">
+                        © 2022 <strong>PredixMarket</strong>. All rights reserved.
+                    </div>
+                    <div className="col-span-1 sm:text-right text-sm mb-6">
+                        <div className="font-bold">Information</div>
+                        <ul>
+                            {footerLink.left.map(({ name, link }, k) => (
+                                <li key={k} className="py-1">
+                                    <a href={link} className="hover:text-[#512da8]">
+                                        {name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="col-span-1 sm:text-right text-sm">
+                        <div className="font-bold">Help &amp; Support</div>
+                        <ul>
+                            {footerLink.right.map(({ name, link }, k) => (
+                                <li key={k} className="py-1">
+                                    <a href={link} className="hover:text-[#512da8]">
+                                        {name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <div className="md:w-1/3 mt-5 md:mt-0  w-full">
-                    <div className="text-xl font-bold">Help &amp; Support</div>
-                    <ul>
-                        {footerLink.right.map(({ name, link }, k) => (
-                            <li key={k} className="py-1">
-                                <a href={link} className="hover:text-[#512da8]">
-                                    {name}{" "}
-                                    <span className="text-xs font-semibold bg-gray-300  py-1 px-2 rounded">SOON</span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            <div className="footerBot text-sm p-5 pb-8 mt-5 text-center">
-                <div className="border-t border-gray-400 pt-3"> © 2022 PredixMarket. All rights reserved.</div>
             </div>
         </>
     );
