@@ -55,7 +55,7 @@ const Navigation = () => {
                                     { name: "Portfolio", link: "/portfolio" },
                                     { name: "Leaderboard", link: "/leaderboard" },
                                 ].map(({ name, link }) => (
-                                    <li className="list-none hover:text-sky-blue hover:underline hover:underline-offset-8">
+                                    <li className="list-none hover:text-sky-blue hover:underline hover:underline-offset-8 transition-colors duration-75">
                                         <Link className="px-2" to={link}>
                                             {name}
                                         </Link>
