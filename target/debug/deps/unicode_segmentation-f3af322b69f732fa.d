@@ -1,0 +1,11 @@
+/home/aravind/polymarket_fin/target/debug/deps/unicode_segmentation-f3af322b69f732fa.rmeta: /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/lib.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/grapheme.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/sentence.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/word.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/tables.rs
+
+/home/aravind/polymarket_fin/target/debug/deps/libunicode_segmentation-f3af322b69f732fa.rlib: /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/lib.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/grapheme.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/sentence.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/word.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/tables.rs
+
+/home/aravind/polymarket_fin/target/debug/deps/unicode_segmentation-f3af322b69f732fa.d: /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/lib.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/grapheme.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/sentence.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/word.rs /home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/tables.rs
+
+/home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/lib.rs:
+/home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/grapheme.rs:
+/home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/sentence.rs:
+/home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/word.rs:
+/home/aravind/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.9.0/src/tables.rs:

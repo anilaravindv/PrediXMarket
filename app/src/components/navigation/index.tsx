@@ -154,7 +154,7 @@ const Navigation = () => {
                     </span>
                   </button>
                   <div className="collapse navbar-collapse" id="navbarScroll">
-                    {/* {
+                    {
                       connected ? (
                         <>
                           <ul className="navbar-nav m-auto my-2 my-lg-0">
@@ -171,7 +171,7 @@ const Navigation = () => {
                           </ul>
                         </>
                       ) : <Link to="/markets">Markets</Link>
-                    } */}
+                    }
                     <div className="d-flex">
                       <button className="btn btn-connect" type="submit">Disconnect <i className="fa fa-angle-right" aria-hidden="true"></i></button>
                     </div>
