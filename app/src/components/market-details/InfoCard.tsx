@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import moment from "moment";
 import CustomButton from "components/common/CustomButton";
 import { isAdmin } from "auth";
+import { DateTime } from "luxon";
 
 const InfoCard = observer((props: any) => {
     const { marketStore, profileStore } = useStores();
@@ -83,13 +84,16 @@ const InfoCard = observer((props: any) => {
     }
 
     function getMarketState() {
+        console.log("market state ", market );
         return Object.keys(market.state)[0].toUpperCase() || "";
     }
 
     function getMarketStateText() {
         let t = getMarketState();
+        
         if (isMarketResolved()) {
-            t = t + "(" + Object.keys(market.state.resolved.outcome)[0].toUpperCase() + ")";
+            //t = t + "(" + Object.keys(market.state.resolved.outcome)[0].toUpperCase() + ")";
+            t = Object.keys(market.state.resolved.outcome)[0].toUpperCase();
         }
 
         return t;
@@ -114,6 +118,12 @@ const InfoCard = observer((props: any) => {
 
     function isMarketResolved() {
         return getMarketState() === "RESOLVED";
+    }
+
+    function isClosedForTrading() {
+        let isClosed = Object.keys(marketStore.selectedMarket.state)[0].toUpperCase() != "OPEN";
+        let isExpired = marketStore.selectedMarket.expiresAt <= DateTime.now();
+        return isClosed || isExpired;
     }
 
     function deleteMarketHandler(){
@@ -381,7 +391,17 @@ const InfoCard = observer((props: any) => {
                         />}
                     </div>}
                 </div>
-
+                <div className="flex justify-end">
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "pyth" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is closed with{" "}{market.resolver}, Outcome : {getMarketStateText()}
+                    </div>}
+                    {isClosedForTrading() && getMarketState() != "OPEN" && market.resolver === "admin" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is closed with an Answer by Admin , Outcome : {getMarketStateText()}
+                    </div>}
+                    {isClosedForTrading() && getMarketState() == "OPEN" && <div className="!my-2 !mx-2 !p-3 text-lg text-red-500 font-semibold rounded border-solid border-2 border-purple-800">
+                        Market is expired and closed for trading
+                    </div>}
+                </div>
             </div>
 
         </div>

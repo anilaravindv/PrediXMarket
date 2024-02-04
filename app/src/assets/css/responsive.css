@@ -1,0 +1,75 @@
+@media screen and (max-width: 1599px) {
+}
+@media screen and (max-width: 1499px) {
+}
+@media screen and (max-width: 1399px) {
+}
+@media screen and (max-width: 1299px) {
+}
+@media screen and (max-width: 1199px) {
+  .element-header { max-width: 268px;}
+  .home-banner .bnr-txt h1 { font-size: 50px;}
+  .buy-sel-tab .nav-tabs .nav-item .nav-link, .buy-sel-tab .tab-content h2, .buy-sel-tab .tab-content .tp-input label { font-size: 20px; margin-bottom: 10px;}
+  .buy-sel-tab .tab-content .tp-btn-grp { margin-bottom: 10px;}
+  .buy-sel-tab .tab-content ul li { font-size: 18px; margin-bottom: 2px;}
+  .buy-sel-tab .tab-content .tp-btn-grp button { font-size: 16px; padding: 10px 5px;}
+  .buy-sel-tab .tab-content .tp-input input, .buy-sel-tab .tab-content .tp-input button { padding: 10px 10px;}
+  .buy-sel-tab .tab-content .tp-input input { margin-bottom: 10px;}
+  .buy-sel-tab .tab-content ul li > div:last-child {text-align: right;}
+  .analetic-card h3 { font-size: 16px;}
+  .analetic-card .ac-card .ac-value { font-size: 24px;}
+  .analetic-card .ac-card .ac-img img { width: 40px;}
+}
+@media (min-width: 992px) {
+}
+@media screen and (max-width: 991px) {
+  header .navbar .container-fluid .collapse {border-radius: 10px; background: #fff; padding: 10px; margin-top: 10px;}
+  header .navbar .container-fluid .collapse .navbar-nav .nav-item .nav-link { margin-left: 0; margin-right: 0; border-bottom: 1px solid #E5E5E5;}
+  .home-banner .bnr-txt { padding-top: 100px;max-width: 100%; text-align: center; margin-bottom: 50px;}
+  .home-banner .bnr-txt h1 { font-size: 30px; margin-bottom: 5px;}
+  .home-banner .bnr-txt p { font-size: 16px; margin-bottom: 20px;}
+  .home-banner .bnr-img img { max-width: 360px;}
+  footer .copyright { text-align: center; margin-bottom: 20px;}
+  footer .f-menu { text-align: center;}
+  footer { padding-top: 30px; padding-bottom: 20px;}
+  .inner-banner .ib-content .ib-btn-bar button { margin: 0 4px 10px; font-size: 14px; padding: 0px 5px;}
+  header .navbar .container-fluid .collapse .navbar-nav .nav-item .active::after, header .navbar .container-fluid .collapse .navbar-nav .nav-item .nav-link:hover { bottom: -1px;}
+  .mt-min-132 { margin-top: 0;}
+  .buy-sel-tab .nav-tabs .nav-item .nav-link { margin-bottom: 0;}
+}
+@media (min-width: 768px) {
+}
+@media screen and (max-width: 767px) {
+  header { padding: 10px 0;}
+  header .navbar .container-fluid .navbar-brand img { height: 60px;}
+  .inner-banner { padding-top: 100px;}
+  .inner-banner .ib-content .search-box input { padding: 10px 15px 10px 20px; font-size: 16px;}
+  .inner-banner .ib-content .search-box {margin: 0 auto 10px auto;}
+  .inner-banner .ib-content .ib-btn-bar { margin-bottom: 0px;}
+  .inner-banner .ib-content h1 { font-size: 25px; margin-bottom: 8px; font-weight: 500;}
+  .middle-body { padding: 20px 0 20px;}
+  .buy-sel-tab .tab-content { padding: 15px;}
+  .buy-sel-tab .tab-content .tp-input input, .buy-sel-tab .tab-content .tp-input button { font-size: 16px; padding: 10px 10px;}
+  .buy-sel-tab .tab-content .tp-btn-grp button { font-size: 14px; padding: 8px 3px;}
+  .buy-sel-tab .tab-content ul li { font-size: 16px;}
+  .analetic-card { margin-bottom: 20px;}
+  .holding-value { font-size: 14px; line-height: 20px;}
+  .holding-value li { margin-right: 24px;}
+}
+@media screen and (max-width: 575px) {
+  .element-header { max-width: 158px;}
+  .home-banner .bnr-txt { padding-top: 20px; margin-bottom: 30px;}
+  .home-banner .bnr-img img { max-width: 300px;}
+  .inner-banner .bnr-mrkt-contnt { display: block; text-align: center;}
+  .inner-banner .bnr-mrkt-contnt .bmc-img { margin: 0 auto 15px;}
+  .inner-banner .bnr-mrkt-contnt .bmc-txt { width: 100%;}
+  .inner-banner .bnr-mrkt-contnt .bmc-txt ul {display: block;}
+  .inner-banner .bnr-mrkt-contnt .bmc-txt ul li { line-height: 22px; margin-right: 0;}
+  .buy-sel-tab .tab-content ul li { font-size: 14px;}
+  .inner-banner .ib-content p { font-size: 12px; line-height: 18px;}
+  .holding-value { display: block; margin-bottom: 20px;}
+  .holding-value li { margin-right: 0; width: 48%; display: inline-block; margin-bottom: 10px;}
+}
+@media screen and (max-width: 380px) {
+  .home-banner .bnr-txt h1 { font-size: 25px;}
+}

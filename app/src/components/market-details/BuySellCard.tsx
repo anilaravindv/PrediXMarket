@@ -248,13 +248,13 @@ const BuySellCard = observer(() => {
                         <div>LP Fee</div>
                         <div>2%</div>
                     </div>
-                    <div className="flex flex-wrap justify-between text-lg">
+                    {/* <div className="flex flex-wrap justify-between text-lg">
                         <div>Your Avg. Price</div>
                         <div>$0.00</div>
-                    </div>
+                    </div> */}
                     <div className="flex flex-wrap justify-between text-lg">
                         <div>Estimated Shares Bought</div>
-                        <div>{outcome == "Y" ? userShares.yes : userShares.no}</div>
+                        <div>{possibleShares}</div>
                     </div>
                     <div className="flex flex-wrap justify-between text-lg">
                         <div>Maximum Winnings</div>
@@ -264,10 +264,10 @@ const BuySellCard = observer(() => {
                                 : parseFloat(possibleShares) * (1 - noOutcomeSharePrice)}
                         </div>
                     </div>
-                    <div className="flex flex-wrap justify-between text-lg">
+                    {/* <div className="flex flex-wrap justify-between text-lg">
                         <div>Max Return on Investment</div>
                         <div>0.00%</div>
-                    </div>
+                    </div> */}
                     <button
                         className="my-4 w-full bg-purple-900 p-3 rounded text-white text-lg font-semibold hover:bg-purple-600"
                         onClick={handleBuySell}

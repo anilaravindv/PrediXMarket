@@ -4,12 +4,15 @@ import { formatToSol } from "utils";
 import React from "react";
 import Button from "@mui/material/Button";
 
+
 const AboutCard = observer((props: any) => {
     const { marketStore, profileStore } = useStores();
 
     if (marketStore.selectedMarket === null) {
         return <>Loading...</>;
     }
+
+
 
     const market = marketStore.selectedMarket;
 
@@ -22,7 +25,7 @@ const AboutCard = observer((props: any) => {
                 <img className="w-[100%]" src="assets/graph.jpg" alt="" />
             </div>
             <div className="marketWrap mt-2">
-                <div className="marketHeading text-lg font-semibold border-b border-gray-400 py-4 px-8">
+                {/* <div className="marketHeading text-lg font-semibold border-b border-gray-400 py-4 px-8">
                     Market Positions
                 </div>
                 <div className="flex justify-around py-2 mt-6 border-y border-gray-300 text-lg font-semibold">
@@ -32,7 +35,7 @@ const AboutCard = observer((props: any) => {
                     <div>Value: Init. | Cur.</div>
                     <div>Max. Payout</div>
                 </div>
-                <div className="py-6">No Market Positions</div>
+                <div className="py-6">No Market Positions</div> */}
                 <div className="text-3xl font-semibold">About this market</div>
                 <div className="pt-2">{market.about}</div>
                 <div>
@@ -40,9 +43,9 @@ const AboutCard = observer((props: any) => {
                         Resolution Source
                         <br />
                         {market.resolver === "pyth" ? 
-                        <a href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`} className="text-blue-700">
+                        <a href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`} target="_blank" className="text-blue-700">
                             {market.resolutionSource}
-                        </a> : <a href={market.resolutionSource} className="text-blue-700">
+                        </a> : <a href={market.resolutionSource} target="_blank" className="text-blue-700">
                             {market.resolutionSource}
                         </a>}
 
@@ -52,9 +55,12 @@ const AboutCard = observer((props: any) => {
                     <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
                         Resolution Type
                         <br />
-                        <a href={market.resolver} className="text-blue-700">
+                        {market.resolver === "pyth"?  <a href={"https://pyth.network/"} target="_blank" className="text-blue-700">
                             {market.resolver}
-                        </a>
+                        </a> : 
+                        <a href={`https://solscan.io/account/${market.creator.toBase58()}?cluster=devnet`} target="_blank" className="text-blue-700">
+                        {market.resolver}
+                    </a>}
                     </div>
                 </div>
                 <div>
@@ -66,13 +72,14 @@ const AboutCard = observer((props: any) => {
                         </a>
                     </div>
                     <br />
-                    <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
+
+                    {/* <div className="inline-block bg-gray-200 rounded-xl px-4 py-1 mt-4">
                         Resolver:
                         <a href="" className="text-blue-700">
                             {" "}
                             View Contact
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

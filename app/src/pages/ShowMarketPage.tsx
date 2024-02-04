@@ -10,6 +10,7 @@ import InfoCard from "components/market-details/InfoCard";
 import Background from "assets/Hero.png";
 import AboutCard from "components/market-details/AboutCard";
 import { formatToSol } from "utils";
+import MarketStatsCard from "components/market-details/MarketStatsCard";
 
 const SharesView = observer(() => {
     const { marketStore } = useStores();
@@ -45,6 +46,7 @@ const ShowMarketPage = () => {
                 {/*<ChartCard/>*/}
                 <div className="m-2 p-5 pb-0 flex flex-wrap justify-between -mx-2">
                     <div className="lg:w-[68%] md:w-[65%] p-3">
+                        <MarketStatsCard/>
                         <AboutCard />
                     </div>
                     <div className="lg:w-[29%] md:w-[35%] p-3">

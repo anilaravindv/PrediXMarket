@@ -16,6 +16,7 @@ import WorkspaceUpdater from "components/WorkspaceUpdater";
 import MarketEventHandler from "components/MarketEventHandler";
 import RequireAuth from "components/auth/RequireAuth";
 
+
 function App() {
     const [rootStore] = useState(new RootStore());
     return <StoreProvider store={rootStore}>

@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/aravind/polymarket_fin/target/debug/build/typenum-b6be89a333a8e2e8/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_OP=/home/aravind/polymarket_fin/target/debug/build/typenum-b6be89a333a8e2e8/out/op.rs
