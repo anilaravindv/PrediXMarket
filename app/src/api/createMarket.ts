@@ -12,6 +12,7 @@ export async function createMarket(marketInfo: any) {
     }
     const program = workspace.program as Program;
 
+    console.log("Porgram : " , program );
     const marketKeypair = anchor.web3.Keypair.generate();
     const shareKeyPair = anchor.web3.Keypair.generate();
     const authority = (program.provider as anchor.AnchorProvider).wallet;

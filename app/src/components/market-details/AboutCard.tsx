@@ -40,7 +40,7 @@ const AboutCard = observer((props: any) => {
                         Resolution Source:&nbsp;
                         {market.resolver === "pyth" ? (
                             <a
-                                href={`https://solscan.io/account/${market.resolutionSource}?cluster=devnet`}
+                                href={`https://solscan.io/account/${market.resolutionSource}?cluster=testnet`}
                                 target="_blank"
                                 className="text-blue-700"
                             >
@@ -62,7 +62,7 @@ const AboutCard = observer((props: any) => {
                             </a>
                         ) : (
                             <a
-                                href={`https://solscan.io/account/${market.creator.toBase58()}?cluster=devnet`}
+                                href={`https://solscan.io/account/${market.creator.toBase58()}?cluster=testnet`}
                                 target="_blank"
                                 className="text-blue-700"
                             >

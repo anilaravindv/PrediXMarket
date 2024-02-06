@@ -30,6 +30,12 @@ const LandingPage = () => {
                             >
                                 Explore Markets <i className="fa fa-angle-right ml-2" aria-hidden="true"></i>
                             </a>
+                            <a
+                                href="/markets/create"
+                                className="btn bg-sky-blue text-white uppercase text-lg font-normal py-3 px-5 rounded"
+                            >
+                                Create Market <i className="fa fa-angle-right ml-2" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                     <div className="col-span-6 max-md:col-span-12 max-md:text-center">

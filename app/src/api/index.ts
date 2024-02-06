@@ -10,3 +10,4 @@ export * from "./isAdmin";
 export * from "./claimWinnings";
 export * from "./claimLiquidity";
 export * from "./claimLiquidityFees";
+export * from "./deleteMarket";

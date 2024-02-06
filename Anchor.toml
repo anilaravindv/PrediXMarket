@@ -2,17 +2,20 @@
 seeds = false
 
 [programs.localnet]
-marketplace = "6q8b3wNNYLTfaLdSdfiBhZqJsokxg6ovXLkcesmHddnw"
+marketplace = "2Q1c1cunmrWNPLkWUPZ1wY2Zn57QoXC7awR7eY8dFCRD"
 
 [programs.devnet]
-marketplace = "6q8b3wNNYLTfaLdSdfiBhZqJsokxg6ovXLkcesmHddnw"
+marketplace = "2Q1c1cunmrWNPLkWUPZ1wY2Zn57QoXC7awR7eY8dFCRD"
+
+[programs.testnet]
+marketplace = "2Q1c1cunmrWNPLkWUPZ1wY2Zn57QoXC7awR7eY8dFCRD"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
 #cluster = "localnet"
-cluster = "devnet"
+cluster = "testnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
