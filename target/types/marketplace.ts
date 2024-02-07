@@ -235,6 +235,27 @@ export type Marketplace = {
       ]
     },
     {
+      "name": "deleteMarket",
+      "accounts": [
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "closeMarketWithPyth",
       "accounts": [
         {
@@ -713,7 +734,7 @@ export type Marketplace = {
     {
       "code": 6005,
       "name": "AboutTooLong",
-      "msg": "The provided market about text should be 300 characters long maximum"
+      "msg": "The provided market about text should be 200 characters long maximum"
     },
     {
       "code": 6006,
@@ -1035,6 +1056,27 @@ export const IDL: Marketplace = {
       ]
     },
     {
+      "name": "deleteMarket",
+      "accounts": [
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
       "name": "closeMarketWithPyth",
       "accounts": [
         {
@@ -1513,7 +1555,7 @@ export const IDL: Marketplace = {
     {
       "code": 6005,
       "name": "AboutTooLong",
-      "msg": "The provided market about text should be 300 characters long maximum"
+      "msg": "The provided market about text should be 200 characters long maximum"
     },
     {
       "code": 6006,

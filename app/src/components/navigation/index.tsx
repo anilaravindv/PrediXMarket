@@ -9,6 +9,8 @@ import { useStores } from "context/StoreComponent";
 import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import RequireAuth from "components/auth/RequireAuth";
+
 
 interface ICreateMarketLink {
     onClick?: () => void;
@@ -112,6 +114,15 @@ const Navigation = () => {
                                         >
                                             Leaderboard
                                         </Link>
+                                        <RequireAuth>
+                                        <Link
+                                            className="py-1 border-b border-b-neutral-200 mb-5"
+                                            to="/markets/create"
+                                            onClick={() => setIsNavOpen(false)}
+                                        >
+                                            Create Market
+                                        </Link>  
+                                        </RequireAuth>
                                     </>
                                 ) : null}
                                 {connected ? (

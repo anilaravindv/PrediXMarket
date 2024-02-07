@@ -6,6 +6,12 @@ import ElementFooter from "assets/images/element_02.png";
 import { Link } from "react-router-dom";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import {Route, Routes} from "react-router-dom";
+import MarketsPage from "pages/MarketsPage";
+import CreateMarketPage from "pages/CreateMarketPage";
+import RequireAuth from "components/auth/RequireAuth";
+
+
 
 const LandingPage = () => {
     const { connected } = useWallet();
@@ -24,18 +30,20 @@ const LandingPage = () => {
                             <p className="text-lg max-md:text-base mb-10">
                                 PredixMarket is a information markets platform, built on Solana.
                             </p>
-                            <a
-                                href="/markets"
-                                className="btn bg-sky-blue text-white uppercase text-lg font-normal py-3 px-5 rounded"
-                            >
-                                Explore Markets <i className="fa fa-angle-right ml-2" aria-hidden="true"></i>
-                            </a>
-                            <a
-                                href="/markets/create"
-                                className="btn bg-sky-blue text-white uppercase text-lg font-normal py-3 px-5 rounded"
-                            >
-                                Create Market <i className="fa fa-angle-right ml-2" aria-hidden="true"></i>
-                            </a>
+                            <Link
+                                            className="btn bg-sky-blue text-white uppercase text-lg font-normal py-3 px-5 rounded"
+                                            to="/markets"
+                                        >
+                                            Explore Markets
+                            </Link>
+                            {/* <RequireAuth>
+                                <Link
+                                            className="btn bg-sky-blue text-white uppercase text-lg font-normal py-3 px-5 rounded"
+                                            to="/markets/create"
+                                        >
+                                           Create Market
+                                </Link>
+                            </RequireAuth> */}
                         </div>
                     </div>
                     <div className="col-span-6 max-md:col-span-12 max-md:text-center">

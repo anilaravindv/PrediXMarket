@@ -346,7 +346,7 @@ const InfoCard = observer((props: any) => {
                 <div className="text-xl text-[#272727] font-normal my-2">{market.name}</div>
                 <div className="flex text-[15px] sm:flex-row flex-col">
                     <div className="pr-4 text-red-500 font-light">
-                        Expiration - {moment(market.expiresAt).format("DD-MMM-YYYY")}
+                        Expiration - {market.expiresAt.toString()}
                     </div>
                     <div className="px-4">${formatToSol(market.volume)} Vol.</div>
                     <div className="px-4">${formatToSol(market.liquidity)} Liq.</div>
