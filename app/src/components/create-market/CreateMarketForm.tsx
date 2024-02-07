@@ -15,7 +15,7 @@ const CreateMarketForm = ({initialValues, onSubmit}) => {
                     .max(200, 'Must be 200 characters or less')
                     .required('Required'),
                 about: yup.string()
-                    .max(2000, 'Must be 2000 characters or less')
+                    .max(200, 'Must be 200 characters or less')
                     .required('Required'),
                 expiresAt: yup.date()
                     .min(minExpDate, 'Must be future date')
