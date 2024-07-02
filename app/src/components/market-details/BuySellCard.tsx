@@ -10,6 +10,9 @@ import BigNumber from "bignumber.js";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { formatToSol, usdToSol } from "utils";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
+import { doc, setDoc, addDoc, updateDoc } from "firebase/firestore";
+import { db } from '../../database/firebaseconfig';
+import { Console, timeStamp } from "console";
 
 const BuySellCard = observer(() => {
     const { marketStore } = useStores();
@@ -65,6 +68,17 @@ const BuySellCard = observer(() => {
         setAction(action);
     }
 
+    async function updateDatabase() {
+        // Update Firebase Firestore with the new prices
+        const docRef = doc(db, 'Markets', marketStore.selectedMarket.address, 'actions', DateTime.now().toISO());
+        await setDoc(docRef, {
+            yesSharePrice: yesOutcomeSharePrice,
+            noSharePrice: noOutcomeSharePrice,
+            timeStamp : DateTime.now().toISO()
+        }, { merge: true });
+        console.log("Updated Database successfully");
+    }
+
     async function handleBuySell() {
         if (action === "buy") {
             marketStore
@@ -73,7 +87,8 @@ const BuySellCard = observer(() => {
                     outcome: outcome,
                     amount: amount,
                 })
-                .then(() => alert("Shares bought successfully."))
+                .then(() =>alert("Shares bought successfully."))
+                .then(updateDatabase)
                 .catch((e) => {
                     console.error(e);
                     alert("Buy operation failed");
@@ -86,7 +101,8 @@ const BuySellCard = observer(() => {
                     amount: amount,
                     // shares: sellShares,
                 })
-                .then(() => alert("Shares sold successfully."))
+                .then(() =>alert("Shares sold successfully."))
+                .then(updateDatabase)
                 .catch((e) => {
                     console.error(e);
                     alert("Sell operation failed");
